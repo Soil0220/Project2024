@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="main.css" />
+    <title>글 변경 페이지</title>
+    <script>
+        $(document).ready(function() {
+            const getParams = new URLSearchParams();        // urlencoded
+            const bno = searchParams.get('bno');            // 글번호
+            
+            if(bno==null) {                                 // 글번호 없을 경우
+                alert('잘못된 접근입니다');                    
+                location.href="list.html";
+            }
+
+            $.ajax({
+                url:'http://192.168.0.177:8081/board/read?bno=' + bno,
+                success(result){
+                    $('#password').val(result.val);
+                    $('#title').val(result.title);
+                    $('#content').val(result.content);
+                },
+                error(result){
+                    alert(result.responseText);
+                    location.href = "list.html";
+                }
+            })
+
+            $('#update').on('click', function() {
+                const params = {
+                    bno: bno,
+                    password: $('#password').val(),
+                    title: $('#title').val(),
+                    content: $('#content').val()
+                };
+
+                $.ajax({
+                    url:'http://192.168.0.177:8081/board/update',
+                    method: 'post',
+                    data: params,
+                    success(){
+                        location.href="list.html"
+                    },
+                    error(result){
+                        alert(result.responseText);
+                    }
+                });
+            })
+            
+            $('#delete').on('click', function(){
+                const params = {
+                    bno: bno,
+                    password: $('#password').val(),
+                };
+                
+                $.ajax({
+                    url: 'http://192.168.0.177:8081/board/delete',
+                    method: params,
+                    data: params,
+                    
+                    success(){
+                        location.href="list.html"
+                    },
+                    error(result){
+                        alert(result.responseText);
+                    }
+                })
+            })
+        })
+    </script>
+  </head>
+
+  <body>
+    <div id="page">
+      <header></header>
+      <nav>
+        <ul>
+          <li><a href="#">home</a></li>
+          <li><a href="#">write</a></li>
+          <li><a href="#">update</a></li>
+        </ul>
+      </nav>
+      <main>
+        <aside></aside>
+        <section>
+          <form id="frm" enctype="application/x-www-form-urlencoded">
+            비밀번호: <input type="text" id="password" name="password" /><br />
+            제목: <input type="text" id="title" name="title" /><br />
+            내용: <input type="text" id="content" name="content" /><br />
+            <button id="update">수정</button>
+            <button id="delete">삭제</button>
+          </form>
+        </section>
+        <aside></aside>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>
