@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+#page {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+
+header, footer, nav {
+    height: 60px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+header, footer {
+    border: solid 1px rgb(79, 87, 92)
+}
+
+
+aside {
+    height: 500px;
+    width: 100px;
+    background-color: rgb(167, 231, 188);
+}
+
+
+section {
+    width: 900px;
+    min-height: 500px;
+    background-color: white;
+}
+
+
+main {
+    display: flex;
+    background-color: white;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+
+#search {
+    width: 300px;
+    height: 50px;
+    border: 1px solid rgba(172, 162, 162, 0.603);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+#search input {
+    width: 250px;
+    margin-left: 20px;
+    margin-right: 5px;
+    border: none;
+}
+
+nav {
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+}
+
+nav>ul {
+    display: flex;
+    margin: 0;
+    list-style: none;
+}
+
+nav>ul>li {
+    background-color: black;
+    width: 100px;
+    height: 50px;
+}
+
+nav>ul>li>a {
+    color: rgb(122, 196, 152);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+}
+
+nav>ul>li:hover a {
+    background-color: aliceblue;
+}
+
+nav>ul>li:hover {
+    background-color: aliceblue;
+}
