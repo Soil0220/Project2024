@@ -15,6 +15,10 @@
             justify-content: space-between;
             padding:20px;
         }
+        #cntdate{
+            height: 6%;
+            padding: 4px;
+        }
     </style>
     <script>
         $(document).ready(function(){
@@ -93,9 +97,9 @@
                 </table>
                 <div id="end">
                     <button class="btn btn-primary" id="update" style="width:100px; height: 6%; ">변경하기</button>
-                    <div>
-                        조회수 : <p id="readcnt"></p>
-                        작성일 : <p id="writeday"></p>
+                    <div id="cntdate" style="border: 1px solid black;">
+                        조회수 : <span id="readcnt"></span>
+                        작성일 : <span id="writeday"></span>
                     </div>
                 </div>
             </section>
