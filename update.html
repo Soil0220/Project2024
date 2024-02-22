@@ -13,7 +13,7 @@
     <title>글 변경 페이지</title>
     <script>
         $(document).ready(function() {
-            const searchParams = new URLSearchParams();        // urlencoded
+            const searchParams = new URLSearchParams(location.search);        // urlencoded
             const bno = searchParams.get('bno');            // 글번호
             
             if(bno==null) {                                 // 글번호 없을 경우
@@ -22,7 +22,7 @@
             }
 
             $.ajax({
-                url:'http://192.168.0.177:8081/board/read?bno=' + bno,
+                url:'http://192.168.0.177:8801/board/read?bno=' + bno,
                 success(result){
                     $('#password').val(result.val);
                     $('#title').val(result.title);
@@ -92,11 +92,11 @@
         <aside></aside>
         <section>
           <form id="frm" enctype="application/x-www-form-urlencoded">
-            비밀번호: <input type="text" id="password" name="password" /><br />
+            비밀번호: <input type="password" id="password" name="password" /><br />
             제목: <input type="text" id="title" name="title" /><br />
             내용: <input type="text" id="content" name="content" /><br />
-            <button id="update">수정</button>
-            <button id="delete">삭제</button>
+            <button class="btn btn-outline-primary" id="update">수정</button>
+            <button class="btn btn-outline-danger" id="delete">삭제</button>
           </form>
         </section>
         <aside></aside>
