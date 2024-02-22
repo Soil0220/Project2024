@@ -11,11 +11,14 @@
     <title>list</title>
     <script>
       $(document).ready(function () {
+         // 서버에서 데이터를 가져오기 위한 AJAX 요청
         $.ajax({
           url: "http://192.168.0.177:8081/board/list",
           success: function (result) {
             const $tbody = $("#tbody");
+            // 결과 배열을 순회하며 동적으로 테이블 행 생성
             for (let b of result) {
+              // Day.js를 사용하여 날짜 형식 지정
               const writeday = dayjs(b.createdAt).format("YYYY년-MM월-DD일");
               const html = `
                   <tr>
