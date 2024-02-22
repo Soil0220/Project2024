@@ -48,7 +48,6 @@
 
         //버튼 클릭시 이동
         $("#update").on("click", function () {
-          console.log(1);
           let title = $("#title").text();
           let content = $("#content").text();
           location.href = `update.html?bno=${bno}&title=${title}&content=${content}`;
