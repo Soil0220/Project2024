@@ -60,7 +60,15 @@ header {
     display: flex;
     align-items: center;
 }
-
+#end{
+    display: flex;
+    justify-content: space-between;
+    padding:20px;
+}
+#cntdate{
+    height: 6%;
+    padding: 4px;
+}
 
 #search input {
     width: 250px;
